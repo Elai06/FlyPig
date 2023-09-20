@@ -37,7 +37,7 @@ namespace _Project.Scripts.Gameplay
         
         private void Offset()
         {
-            _offsetPosition.x += _speedOfssed;
+            _offsetPosition.x += _speedOfssed * Time.deltaTime;
             _material.mainTextureOffset = _offsetPosition;
         }
     }
