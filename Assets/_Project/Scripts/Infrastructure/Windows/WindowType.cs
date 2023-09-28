@@ -2,9 +2,8 @@
 {
     public enum WindowType
     {
-        Menu,
-        UpperPanel,
+        MainMenu,
         Pause,
-        GunsInventory
+        Died
     }
 }

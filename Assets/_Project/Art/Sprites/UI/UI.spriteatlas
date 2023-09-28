@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 7cffd53b05d8bab4e8aa04a1f60558ff, type: 3}
+    - {fileID: 2800000, guid: 8de7fd95f2dc60a4e975fcf1aede9d59, type: 3}
+    - {fileID: 2800000, guid: 403c282eeafb9e541adf01d2cf3f4e85, type: 3}
+    - {fileID: 2800000, guid: f0dcf2452d9778340b55a7dfd57d21f2, type: 3}
+    - {fileID: 2800000, guid: a85fe75b2f4d6f14ca594ae5af4846b0, type: 3}
+    - {fileID: 2800000, guid: 786b94ea4c6a89a40845c7656e4e1735, type: 3}
+    - {fileID: 2800000, guid: 5526c6423389d964893278bed21ec081, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5526c6423389d964893278bed21ec081, type: 3}
+  - {fileID: 21300000, guid: f0dcf2452d9778340b55a7dfd57d21f2, type: 3}
+  - {fileID: 21300000, guid: 8de7fd95f2dc60a4e975fcf1aede9d59, type: 3}
+  - {fileID: 21300000, guid: 786b94ea4c6a89a40845c7656e4e1735, type: 3}
+  - {fileID: 21300000, guid: 7cffd53b05d8bab4e8aa04a1f60558ff, type: 3}
+  - {fileID: 21300000, guid: a85fe75b2f4d6f14ca594ae5af4846b0, type: 3}
+  - {fileID: 21300000, guid: 403c282eeafb9e541adf01d2cf3f4e85, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - sp_48
+  - sp_32
+  - sp_26
+  - sp_37
+  - sp_05
+  - sp_36
+  - sp_27
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

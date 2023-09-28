@@ -1,17 +1,16 @@
-﻿using System;
-using DG.Tweening;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace _Project.Scripts.Gameplay
 {
     public class BackgroundTilingOffset : MonoBehaviour
     {
         [SerializeField] private float _speedOfssed = 0.00025f;
-        
-        private Material _material;
 
+        [SerializeField] private GameManager _gameManager;
+
+        private Material _material;
         private Vector2 _offsetPosition;
+
 
         private void Awake()
         {
@@ -22,11 +21,12 @@ namespace _Project.Scripts.Gameplay
 
         private void OnDisable()
         {
-           ResetPosition();
+            ResetPosition();
         }
 
         private void Update()
         {
+            if (!_gameManager.IsStart) return;
             Offset();
         }
 
@@ -34,7 +34,7 @@ namespace _Project.Scripts.Gameplay
         {
             _material.mainTextureOffset = Vector2.zero;
         }
-        
+
         private void Offset()
         {
             _offsetPosition.x += _speedOfssed * Time.deltaTime;

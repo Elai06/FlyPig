@@ -1,5 +1,4 @@
-﻿using _Project.Scripts.Infrastructure.Installers;
-using UnityEngine;
+﻿using UnityEngine;
 using Utils.ZenjectInstantiateUtil;
 using Zenject;
 

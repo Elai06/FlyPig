@@ -22,7 +22,7 @@ namespace _Project.Scripts.Infrastructure.StateMachine.States
 
         public void Enter()
         {
-           // _windowService.Open(WindowType.UpperPanel);
+            _windowService.Open(WindowType.MainMenu);
         }
 
         public void Exit()

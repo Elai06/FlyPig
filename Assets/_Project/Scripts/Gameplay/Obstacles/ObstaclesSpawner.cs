@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.Obstacles
@@ -13,22 +14,30 @@ namespace _Project.Scripts.Gameplay.Obstacles
         [SerializeField] private float _interval;
         [SerializeField] private float _speed;
 
+
         private Dictionary<int, Obstacle> _obstaclesSpawned = new();
 
-        private void Start()
+        public void Start()
         {
             SpawnObstacles();
         }
 
-        private void Update()
+        public void ObstacleUpdate()
         {
             MoveObstacles();
+            TrackingObstacles();
+        }
 
-            foreach (var obstacle in _obstaclesSpawned.Values.Where(obstacle =>
-                         obstacle.gameObject.activeSelf && obstacle.EndPoint.position.x < -1.75f))
+        private void TrackingObstacles()
+        {
+            for (int i = 0; i < _obstaclesSpawned.Count; i++)
             {
-                obstacle.gameObject.SetActive(false);
-                CreateObstacle();
+                var obstacle = _obstaclesSpawned.Values.ToList()[i];
+                if (obstacle.gameObject.activeSelf && obstacle.EndPoint.position.x < -1.75f)
+                {
+                    obstacle.gameObject.SetActive(false);
+                    CreateObstacle();
+                }
             }
         }
 
@@ -93,7 +102,7 @@ namespace _Project.Scripts.Gameplay.Obstacles
                 var obstacle = _obstaclesSpawned.Values.ToList()[i];
                 obstacle.gameObject.SetActive(false);
             }
-            
+
             CreateObstacle();
         }
     }
