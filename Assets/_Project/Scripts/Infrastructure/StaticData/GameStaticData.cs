@@ -8,6 +8,11 @@ namespace _Project.Scripts.Infrastructure.StaticData
     public class GameStaticData : ScriptableObjectInstaller
     {
         [SerializeField] private WindowsStaticData _windowsStaticData;
+
+        [SerializeField] private float _obstaclesSpeed = 1;
+
+        public float ObstaclesSpeed => _obstaclesSpeed;
+
         public WindowData GetWindowData(WindowType windowType)
         {
             return _windowsStaticData.GetWindows().Find(x => x.WindowType == windowType);

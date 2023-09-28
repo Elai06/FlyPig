@@ -38,14 +38,16 @@ namespace _Project.Scripts.Gameplay
             _playerManager.Died -= OnDied;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 StartPlay();
-                return;
             }
-            
+        }
+
+        private void Update()
+        {
             if (!IsStart) return;
             _obstaclesSpawner.ObstacleUpdate();
             _playerMovement.MovementUpdate();

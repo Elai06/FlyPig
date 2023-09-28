@@ -224,8 +224,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3366375942357277560}
   - component: {fileID: 4885574403409000669}
-  - component: {fileID: 7413158598863829063}
   - component: {fileID: 4607142416284726638}
+  - component: {fileID: 85677269378443573}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -300,20 +300,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7413158598863829063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4549092897689666455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f9b6e57e454656ae52a0d9384342c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedOfssed: 0.15
-  _gameManager: {fileID: 6320260172929567694}
 --- !u!68 &4607142416284726638
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -336,6 +322,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &85677269378443573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549092897689666455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570506dd54b84246a43d3498fd2dfc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 6320260172929567694}
+  _obstaclesSpawner: {fileID: 7003293330520860354}
 --- !u!1 &4575010560173180937
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d525fe0280ae4ee3a0ce2c1c187c9b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerScoreTracker: {fileID: 7643175592708138400}
   _obstacles:
   - {fileID: 6040283830381444808, guid: c339d290989c70f43b00a463b7d782fb, type: 3}
   - {fileID: 6040283830381444808, guid: 78bc963769fba1244afd881351e226e6, type: 3}
@@ -388,7 +389,8 @@ MonoBehaviour:
   - {fileID: 6040283830381444808, guid: 13d48ca2f236e4a45b37e0d8cca6a7da, type: 3}
   _startObstacles: 1
   _interval: 0
-  _speed: 1
+  _beginningSpeed: 1.25
+  _speedMultiplier: 1.1
 --- !u!1 &4748287849056196389
 GameObject:
   m_ObjectHideFlags: 0

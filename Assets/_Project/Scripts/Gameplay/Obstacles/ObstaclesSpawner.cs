@@ -1,25 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.Obstacles
 {
     public class ObstaclesSpawner : MonoBehaviour
     {
+        [SerializeField] private PlayerScoreTracker _playerScoreTracker;
         [SerializeField] private List<Obstacle> _obstacles;
         [SerializeField] private int _startObstacles = 1;
         [SerializeField] private float _interval;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _beginningSpeed = 1;
+        [SerializeField] private float _speedMultiplier = 1.05f;
 
+        private float _currentSpeed;
 
-        private Dictionary<int, Obstacle> _obstaclesSpawned = new();
+        private readonly Dictionary<int, Obstacle> _obstaclesSpawned = new();
+
+        public float Speed => _currentSpeed;
 
         public void Start()
         {
             SpawnObstacles();
+            _currentSpeed = _beginningSpeed;
+        }
+
+        private void OnEnable()
+        {
+            _playerScoreTracker.ScoreChanged += OnScoreChanged;
+        }
+
+        private void OnDisable()
+        {
+            _playerScoreTracker.ScoreChanged -= OnScoreChanged;
+        }
+
+        private void OnScoreChanged(int score)
+        {
+            if (score % 3 == 0)
+            {
+                _currentSpeed *= _speedMultiplier;
+                
+                Debug.Log($"Speed : {_currentSpeed}");
+            }
         }
 
         public void ObstacleUpdate()
@@ -43,10 +69,13 @@ namespace _Project.Scripts.Gameplay.Obstacles
 
         private void MoveObstacles()
         {
-            foreach (var obstacle in _obstaclesSpawned.Values
-                         .Where(obstacle => obstacle.gameObject.activeSelf))
+            for (int i = 0; i < _obstaclesSpawned.Count; i++)
             {
-                obstacle.gameObject.transform.position += Vector3.left * (_speed * Time.deltaTime);
+                var obstacle = _obstaclesSpawned.Values.ToList()[i];
+                if (obstacle.gameObject.activeSelf)
+                {
+                    obstacle.gameObject.transform.position += Vector3.left * (_currentSpeed * Time.deltaTime);
+                }
             }
         }
 
@@ -103,6 +132,7 @@ namespace _Project.Scripts.Gameplay.Obstacles
                 obstacle.gameObject.SetActive(false);
             }
 
+            _currentSpeed = _beginningSpeed;
             CreateObstacle();
         }
     }
