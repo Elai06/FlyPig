@@ -18,7 +18,7 @@ namespace _Project.Scripts.Gameplay.UI.Pause
 
         public override Task Show()
         {
-            _gameManager.Pause();
+            _gameManager.Pause(true);
             return Task.CompletedTask;
         }
 
@@ -46,6 +46,7 @@ namespace _Project.Scripts.Gameplay.UI.Pause
 
         private void Return()
         {
+            _gameManager.Pause(false);
             _windowService.Close(WindowType.Pause);
         }
     }

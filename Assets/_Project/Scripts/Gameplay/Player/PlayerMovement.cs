@@ -22,14 +22,14 @@ namespace _Project.Scripts.Gameplay.Player
         public void MovementUpdate()
         {
             SpriteAnimation();
-            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButton(0))
             {
                 ChangeMovementState(MovementState.Fly);
                 Fly();
                 return;
             }
 
-            if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonUp(0))
             {
                 ChangeMovementState(MovementState.Landing);
             }

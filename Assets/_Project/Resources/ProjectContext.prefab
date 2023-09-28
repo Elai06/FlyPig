@@ -389,8 +389,8 @@ MonoBehaviour:
   - {fileID: 6040283830381444808, guid: 13d48ca2f236e4a45b37e0d8cca6a7da, type: 3}
   _startObstacles: 1
   _interval: 0
-  _beginningSpeed: 1.25
-  _speedMultiplier: 1.1
+  _beginningSpeed: 1.35
+  _speedMultiplier: 1.15
 --- !u!1 &4748287849056196389
 GameObject:
   m_ObjectHideFlags: 0

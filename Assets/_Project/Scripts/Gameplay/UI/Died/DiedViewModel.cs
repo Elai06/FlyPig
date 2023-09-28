@@ -23,6 +23,7 @@ namespace _Project.Scripts.Gameplay.UI.Died
         public override Task Show()
         {
             View.ShowScore(_playerScoreTracker.GetScore().ToString());
+            _gameManager.Pause(true);
             return Task.CompletedTask;
         }
 

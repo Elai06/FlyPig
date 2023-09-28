@@ -26,7 +26,10 @@ namespace _Project.Scripts.Gameplay
             _windowService = windowService;
         }
 
-        public bool IsStart { get; private set; }
+        public bool IsPlay { get; private set; }
+        public bool IsPause { get; private set; }
+
+        public bool IsCanPlay => IsPlay && !IsPause;
 
         private void OnEnable()
         {
@@ -38,24 +41,42 @@ namespace _Project.Scripts.Gameplay
             _playerManager.Died -= OnDied;
         }
 
+        private bool IsUIClick()
+        {
+#if UNITY_EDITOR
+            return EventSystem.current.IsPointerOverGameObject();
+#else
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                var isTouchingUI = EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+
+                return isTouchingUI;
+            }
+
+            return false;
+#endif
+        }
+
         private void FixedUpdate()
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0))
             {
+                if (IsUIClick() && !IsPause) return;
                 StartPlay();
             }
         }
 
         private void Update()
         {
-            if (!IsStart) return;
+            if (!IsCanPlay) return;
             _obstaclesSpawner.ObstacleUpdate();
             _playerMovement.MovementUpdate();
         }
 
         private void OnDied()
         {
-            Pause();
+            SwitchPlay(false);
             _windowService.Open(WindowType.Died);
             _playerMovement.ResetSpeed();
             Died?.Invoke();
@@ -63,17 +84,23 @@ namespace _Project.Scripts.Gameplay
 
         public void StartPlay()
         {
-            IsStart = true;
+            SwitchPlay(true);
         }
 
-        public void Pause()
+        public void Pause(bool isPause)
         {
-            IsStart = false;
+            IsPause = isPause;
+        }
+
+        private void SwitchPlay(bool isPlay)
+        {
+            IsPlay = isPlay;
         }
 
         public void ResetGame()
         {
-            Pause();
+            SwitchPlay(false);
+            Pause(false);
             _obstaclesSpawner.Reset();
             Reset?.Invoke();
         }

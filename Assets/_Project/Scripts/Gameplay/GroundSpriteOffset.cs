@@ -27,7 +27,7 @@ namespace _Project.Scripts.Gameplay
 
         private void Update()
         {
-            if (!_gameManager.IsStart) return;
+            if (!_gameManager.IsCanPlay) return;
             Offset();
         }
 
