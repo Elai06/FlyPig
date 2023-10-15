@@ -65,12 +65,8 @@ namespace _Project.Scripts.Gameplay
                 if (IsUIClick() && !IsPause) return;
                 StartPlay();
             }
-        }
-
-        private void Update()
-        {
+            
             if (!IsCanPlay) return;
-            _obstaclesSpawner.ObstacleUpdate();
             _playerMovement.MovementUpdate();
         }
 

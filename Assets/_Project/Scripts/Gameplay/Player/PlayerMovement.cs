@@ -1,96 +1,43 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace _Project.Scripts.Gameplay.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _maxSpeedFly;
-        [SerializeField] private float _flyAcclereation;
-        [SerializeField] private float _maxSpeedLanding;
-        [SerializeField] private float _landingAccleration;
+        [SerializeField] private Rigidbody2D _rb;
+        [SerializeField] private float _forceFly = 20;
+        [SerializeField] private float _speedSpriteAnimation = 0.25f;
 
-        [Header("Sprites")] [SerializeField] private SpriteRenderer _spriteRenderer;
+        [Header("Sprites")] 
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Sprite[] _sprites;
 
-        [SerializeField] private GameManager _gameManager;
-
-        private MovementState _movementState = MovementState.Landing;
-
-        private float _currentSpeed;
+        private float _flyTime;
 
         public void MovementUpdate()
         {
-            SpriteAnimation();
             if (Input.GetMouseButton(0))
             {
-                ChangeMovementState(MovementState.Fly);
+                _flyTime += Time.fixedDeltaTime;
                 Fly();
-                return;
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                ChangeMovementState(MovementState.Landing);
+                _flyTime = 0;
             }
 
-            if (_movementState == MovementState.Landing)
-            {
-                Landing();
-            }
+            SpriteAnimation(_flyTime);
         }
 
         private void Fly()
         {
-            if (_movementState != MovementState.Fly || transform.position.y >= 9)
-            {
-                ChangeMovementState(MovementState.Landing);
-                ResetSpeed();
-                return;
-            }
-
-            if (_currentSpeed < _maxSpeedFly)
-            {
-                _currentSpeed += _flyAcclereation * Time.deltaTime;
-            }
-
-            ChangePositin(Vector3.up * _currentSpeed);
+            _rb.AddRelativeForce(new Vector2(0, _forceFly));
         }
 
-        private void ChangeMovementState(MovementState state)
+        private void SpriteAnimation(float time)
         {
-            _movementState = state;
-        }
-
-        private void Landing()
-        {
-            if (_movementState == MovementState.Landing)
-            {
-                if (_currentSpeed < _maxSpeedLanding)
-                {
-                    _currentSpeed -= _landingAccleration * Time.deltaTime;
-                }
-                
-                ChangePositin(Vector3.up * _currentSpeed);
-            }
-        }
-
-        private void ChangePositin(Vector3 position)
-        {
-            if (transform.position.y <= 0f && _currentSpeed <= 0)
-            {
-                transform.position = Vector3.zero;
-                ResetSpeed();
-                return;
-            }
-
-            transform.position += position;
-        }
-
-        private void SpriteAnimation()
-        {
-            var stepAnimation = (_maxSpeedFly - 0.125) / _sprites.Length;
-            var index = (int)(_currentSpeed / stepAnimation);
+            var index = (int)(time / _speedSpriteAnimation);
 
             if (index < _sprites.Length && index >= 0)
             {
@@ -100,8 +47,7 @@ namespace _Project.Scripts.Gameplay.Player
 
         public void ResetSpeed()
         {
-            _currentSpeed = 0;
-            SpriteAnimation();
+            SpriteAnimation(0);
         }
     }
 }

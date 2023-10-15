@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Project.Scripts.Gameplay.Player;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,7 @@ namespace _Project.Scripts.Gameplay.Obstacles
     public class ObstaclesSpawner : MonoBehaviour
     {
         [SerializeField] private PlayerScoreTracker _playerScoreTracker;
+        [SerializeField] private GameManager _gameManager;
         [SerializeField] private List<Obstacle> _obstacles;
         [SerializeField] private int _startObstacles = 1;
         [SerializeField] private float _interval;
@@ -48,10 +50,13 @@ namespace _Project.Scripts.Gameplay.Obstacles
             }
         }
 
-        public void ObstacleUpdate()
+        public void Update()
         {
-            MoveObstacles();
-            TrackingObstacles();
+            if (_gameManager.IsCanPlay)
+            {
+                MoveObstacles();
+                TrackingObstacles();
+            }
         }
 
         private void TrackingObstacles()
@@ -74,7 +79,7 @@ namespace _Project.Scripts.Gameplay.Obstacles
                 var obstacle = _obstaclesSpawned.Values.ToList()[i];
                 if (obstacle.gameObject.activeSelf)
                 {
-                    obstacle.gameObject.transform.position += Vector3.left * (_currentSpeed * Time.deltaTime);
+                    obstacle.gameObject.transform.Translate(-_currentSpeed * Time.deltaTime, 0,0);
                 }
             }
         }

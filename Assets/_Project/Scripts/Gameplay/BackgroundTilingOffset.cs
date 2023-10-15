@@ -23,7 +23,7 @@ namespace _Project.Scripts.Gameplay
             ResetPosition();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!_gameManager.IsCanPlay) return;
             Offset();
