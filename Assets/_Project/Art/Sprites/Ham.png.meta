@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3f83e308ab1d46941bc75b659f74a685
+guid: 67a76e14941e5754296b1292f6011b6c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -127,112 +127,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: sp_29bust(194)_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 186
-        height: 150
-      alignment: 9
-      pivot: {x: 0.5057475, y: 0.4999999}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ddbbeee945a8fb4ea315af3d4fe0126
-      internalID: -1460875944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sp_29bust(194)_1
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 0
-        width: 186
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19b85f3e2cce91c4ca85f817e848cac0
-      internalID: -1619988547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sp_29bust(194)_2
-      rect:
-        serializedVersion: 2
-        x: 396
-        y: 0
-        width: 186
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d34d0fd2192ab014ab0c99548481696c
-      internalID: 1039808994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sp_29bust(194)_5
-      rect:
-        serializedVersion: 2
-        x: 590
-        y: 0
-        width: 186
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48512a74ce41ea740b0e8068fb0ea5dc
-      internalID: -89550953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sp_29bust(194)_7
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 0
-        width: 186
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 257b6edda8ea5334cbdbd7791437024d
-      internalID: -84632147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -243,15 +138,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      sp_29bust(194)_0: -1460875944
-      sp_29bust(194)_1: -1619988547
-      sp_29bust(194)_2: 1039808994
-      sp_29bust(194)_3: -2009898840
-      sp_29bust(194)_4: -276368405
-      sp_29bust(194)_5: -89550953
-      sp_29bust(194)_6: 970177685
-      sp_29bust(194)_7: -84632147
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

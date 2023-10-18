@@ -86,6 +86,7 @@ namespace _Project.Scripts.Gameplay
         public void Pause(bool isPause)
         {
             IsPause = isPause;
+            _playerMovement.GravitySwitch(isPause);
         }
 
         private void SwitchPlay(bool isPlay)

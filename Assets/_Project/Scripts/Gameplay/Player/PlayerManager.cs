@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player
@@ -10,8 +11,8 @@ namespace _Project.Scripts.Gameplay.Player
         private const int OBSTACCLE_INDEX = 6;
 
         [SerializeField] private BangEffect _bangEffect;
-
         [SerializeField] private GameManager _gameManager;
+        [SerializeField] private ParticleSystem _particleSystem;
 
         private void OnEnable()
         {
@@ -34,6 +35,7 @@ namespace _Project.Scripts.Gameplay.Player
         private void Die()
         {
             _bangEffect.gameObject.SetActive(true);
+            _particleSystem.Play();
             GetComponent<SpriteRenderer>().enabled = false;
             Died?.Invoke();
         }
@@ -42,6 +44,8 @@ namespace _Project.Scripts.Gameplay.Player
         {
             transform.position = Vector3.zero;
             GetComponent<SpriteRenderer>().enabled = true;
+            _particleSystem.Clear();
+            _particleSystem.Stop();
             _bangEffect.gameObject.SetActive(false);
         }
     }

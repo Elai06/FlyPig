@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        public event Action StartFly; 
+
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _forceFly = 20;
         [SerializeField] private float _speedSpriteAnimation = 0.25f;
@@ -16,6 +19,11 @@ namespace _Project.Scripts.Gameplay.Player
 
         public void MovementUpdate()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartFly?.Invoke();
+            }
+            
             if (Input.GetMouseButton(0))
             {
                 _flyTime += Time.fixedDeltaTime;
@@ -48,6 +56,11 @@ namespace _Project.Scripts.Gameplay.Player
         public void ResetSpeed()
         {
             SpriteAnimation(0);
+        }
+
+        public void GravitySwitch(bool isActive)
+        {
+            _rb.simulated = !isActive;
         }
     }
 }
