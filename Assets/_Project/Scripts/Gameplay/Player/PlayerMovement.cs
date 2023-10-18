@@ -6,6 +6,7 @@ namespace _Project.Scripts.Gameplay.Player
     public class PlayerMovement : MonoBehaviour
     {
         public event Action StartFly; 
+        public event Action StopFly; 
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _forceFly = 20;
@@ -33,6 +34,7 @@ namespace _Project.Scripts.Gameplay.Player
             if (Input.GetMouseButtonUp(0))
             {
                 _flyTime = 0;
+                StopFly?.Invoke();
             }
 
             SpriteAnimation(_flyTime);
